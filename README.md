@@ -1,6 +1,6 @@
 # Levi Okoye - Weekly Challenge - Tip Search App
 
-## Uses
+## Features
 
 - Stores data tech tips
 - Add tips
