@@ -5,12 +5,12 @@ const Label = (props) => {
   const [language, setLanguage] = useState(props.language);
 
   const languageClasses = {
-    python: "bg-python",
-    javascript: "bg-javascript",
-    java: "bg-java",
-    c: "bg-c",
-    ruby: "bg-ruby",
-    go: "bg-go",
+    Python: "bg-Python",
+    JavaScript: "bg-JavaScript",
+    Java: "bg-Java",
+    "C++": "bg-C++",
+    Ruby: "bg-Ruby",
+    Go: "bg-Go",
   };
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Label = (props) => {
 
   return (
     <div
-      className={`${languageClasses[language]} rounded-full text-xs font-sgMedium py-1.5 px-3.5 pb-[7px]`}
+      className={`${languageClasses[language]} rounded-full text-[0.55rem] sm:text-[0.6rem] font-sgMedium py-1 px-2 pb-[5px]`}
     >
       {language}
     </div>
