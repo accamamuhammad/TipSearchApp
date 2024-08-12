@@ -3,7 +3,7 @@ const Form = () => {
     "w-full border-[0.5px] p-2 text-black font-sgRegular text-xs rounded-md border-formStroke";
 
   return (
-    <section className="md:w-full w-[480px] h-fit p-5 gap-5 rounded-2xl shadow-md flex flex-col items-start justify-start">
+    <section className="sm:w-[480px] w-full h-fit p-5 gap-5 rounded-2xl shadow-md flex flex-col items-start justify-start">
       <div className="flex flex-col gap-2">
         <h1 className="font-sgBold text-2xl">Add a Tip</h1>
         <p className="font-sgLight text-xs">
@@ -36,12 +36,21 @@ const Form = () => {
         <label htmlFor="language" className="text-black font-sgMedium">
           Choose a language
         </label>
-        <input
-          type="text"
-          name="language"
-          placeholder="What language is the tip"
-          className={InputStyling}
-        />
+        <div className="w-full border pr-2 rounded-lg">
+          <select
+            name="language"
+            placeholder="What language is the tip"
+            className={`${InputStyling} ${"border-none"}`}
+          >
+            <option value="python">language</option>
+            <option value="python">python</option>
+            <option value="python">python</option>
+            <option value="python">python</option>
+            <option value="python">python</option>
+            <option value="python">python</option>
+            <option value="python">python</option>
+          </select>
+        </div>
       </div>
     </section>
   );
