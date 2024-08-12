@@ -21,7 +21,7 @@
 
 ### How I Add Tips
 
-- Tips is added by presenting the user with a form and the data from that form is then organised and added to an array which is then displayed
+Tips is added by presenting the user with a form and the data from that form is then organised and added to an array which is then displayed
 
 ### How I Search for Tips and Filter Them
 
