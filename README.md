@@ -17,7 +17,7 @@
 
 ## Build Guide
 
-- This is where I explain the main components of my build.
+#### This is where I explain the main components of my build.
 
 ### How I Add Tips
 
