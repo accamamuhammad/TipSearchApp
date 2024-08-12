@@ -1,9 +1,9 @@
 const Form = () => {
   const InputStyling =
-    "w-full border-[0.5px] p-2 text-black font-sgRegular text-xs rounded-md border-formStroke";
+    "w-full border-[0.5px] bg-mainBG p-2 text-black font-sgRegular text-xs rounded-md border-formStroke";
 
   return (
-    <section className="sm:w-[480px] w-full h-fit p-5 gap-5 rounded-2xl shadow-md flex flex-col items-start justify-start">
+    <section className="sm:w-[450px] w-full h-fit bg-mainBG p-5 gap-5 rounded-2xl shadow-md flex flex-col items-start justify-start">
       <div className="flex flex-col gap-2">
         <h1 className="font-sgBold text-2xl">Add a Tip</h1>
         <p className="font-sgLight text-xs">
@@ -44,11 +44,11 @@ const Form = () => {
           >
             <option value="python">language</option>
             <option value="python">python</option>
-            <option value="python">python</option>
-            <option value="python">python</option>
-            <option value="python">python</option>
-            <option value="python">python</option>
-            <option value="python">python</option>
+            <option value="javascript">javascript</option>
+            <option value="java">java</option>
+            <option value="c">c</option>
+            <option value="ruby">ruby</option>
+            <option value="go">go</option>
           </select>
         </div>
       </div>
