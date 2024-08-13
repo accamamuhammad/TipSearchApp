@@ -10,6 +10,7 @@ function App() {
   const [toggleAddTask, setToggleAddTask] = useState(false);
   const [toggleDescription, setToggleDescription] = useState(false);
   const [currentDescription, setCurrentDescription] = useState([]);
+  const [currentChoosenLanguage, setCurrentChoosenLanguage] = useState("");
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -53,23 +54,28 @@ function App() {
       language: "Go",
     },
   ]);
+  const [currentFormData, setCurrentFormData] = useState(Data);
 
-  const handleAddTip = () => {
-    setToggleAddTask(!toggleAddTask);
-  };
-
-  const handleToggleDescription = () => {
-    setToggleDescription(false);
-  };
-
-  const openDescription = (description) => {
-    setCurrentDescription([
-      description.title,
-      description.description,
-      description.language,
-    ]);
-    setToggleDescription(true);
-  };
+  useEffect(() => {
+    const handleFilterDataBasedOnLanguage = () => {
+      if (currentChoosenLanguage === "All") {
+        console.log(currentChoosenLanguage);
+      } else if (currentChoosenLanguage === "python") {
+        console.log(currentChoosenLanguage);
+      } else if (currentChoosenLanguage === "javascript") {
+        console.log(currentChoosenLanguage);
+      } else if (currentChoosenLanguage === "java") {
+        console.log(currentChoosenLanguage);
+      } else if (currentChoosenLanguage === "c++") {
+        console.log(currentChoosenLanguage);
+      } else if (currentChoosenLanguage === "ruby") {
+        console.log(currentChoosenLanguage);
+      } else if (currentChoosenLanguage === "go") {
+        console.log(currentChoosenLanguage);
+      }
+    };
+    handleFilterDataBasedOnLanguage();
+  }, [currentChoosenLanguage]);
 
   useEffect(() => {
     const handleFilterForm = () => {
@@ -86,6 +92,27 @@ function App() {
     };
     handleFilterForm();
   }, [formData]);
+
+  const handleAddTip = () => {
+    setToggleAddTask(!toggleAddTask);
+  };
+
+  const handleToggleDescription = () => {
+    setToggleDescription(false);
+  };
+
+  const handleCurrentFilter = (e) => {
+    setCurrentChoosenLanguage(e.target.value);
+  };
+
+  const openDescription = (description) => {
+    setCurrentDescription([
+      description.title,
+      description.description,
+      description.language,
+    ]);
+    setToggleDescription(true);
+  };
 
   return (
     <main className="w-screen h-screen bg-mainBG flex items-center justify-center">
@@ -106,14 +133,17 @@ function App() {
           </div>
           <div className="pr-2 mb-2 bg-filterBg rounded-lg">
             <select
+              value={currentChoosenLanguage}
+              onChange={handleCurrentFilter}
               name="filter-language"
               className="w-full tex-xs font-sgRegular relative p-2 sm:p-2.5 bg-filterBg rounded-lg"
             >
               <option value="python">Filter language</option>
+              <option value="All">All</option>
               <option value="python">Python</option>
               <option value="javascript">Javascript</option>
               <option value="java">Java</option>
-              <option value="c">C++</option>
+              <option value="c++">C++</option>
               <option value="ruby">Ruby</option>
               <option value="go">Go</option>
             </select>
@@ -121,7 +151,7 @@ function App() {
         </div>
         <div className="w-full h-[0.2px] bg-formStroke" />
         <ul className="w-full overflow-y-auto">
-          {Data.map((item, index) => (
+          {currentFormData.map((item, index) => (
             <li
               key={index}
               className="border-b-[0.2px] px-4 sm:px-7 border-formStroke py-3.5 flex flex-row items-center justify-between"
