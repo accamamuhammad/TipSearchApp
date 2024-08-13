@@ -1,4 +1,51 @@
-const Form = () => {
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+
+const Form = (props) => {
+  const [titleValue, setTitleValue] = useState("");
+  const [descriptionValue, setDescriptionValue] = useState("");
+  const [languageValue, setLanguageValue] = useState("");
+  const [formData, setFormData] = useState({
+    title: titleValue,
+    description: descriptionValue,
+    language: languageValue,
+  });
+
+  const handleTitleValue = (e) => {
+    setTitleValue(e.target.value);
+  };
+
+  const handleDescriptionValue = (e) => {
+    setDescriptionValue(e.target.value);
+  };
+
+  const handlelanguageValue = (e) => {
+    setLanguageValue(e.target.value);
+  };
+
+  const handleFormData = () => {
+    if (
+      (titleValue === "") |
+      (descriptionValue === "") |
+      (languageValue === "")
+    ) {
+      alert("Fill all the forms");
+    } else {
+      props.handlePassData(formData);
+      setTitleValue("");
+      setDescriptionValue("");
+      setLanguageValue("");
+    }
+  };
+
+  useEffect(() => {
+    setFormData({
+      title: titleValue,
+      description: descriptionValue,
+      language: languageValue,
+    });
+  }, [titleValue, descriptionValue, languageValue]);
+
   const InputStyling =
     "w-full border-[0.5px] bg-mainBG p-2 text-black font-sgRegular text-xs rounded-md border-formStroke";
 
@@ -17,6 +64,8 @@ const Form = () => {
         <input
           type="text"
           name="title"
+          value={titleValue}
+          onChange={handleTitleValue}
           placeholder="Enter a title"
           className={InputStyling}
         />
@@ -28,6 +77,8 @@ const Form = () => {
         <textarea
           type="text"
           name="description"
+          value={descriptionValue}
+          onChange={handleDescriptionValue}
           placeholder="Give a detailed explanation of the tip here"
           className={`${InputStyling} ${"h-32 flex items-start justify-start resize-none"}`}
         />
@@ -39,6 +90,8 @@ const Form = () => {
         <div className="w-full border pr-2 rounded-lg">
           <select
             name="language"
+            value={languageValue}
+            onChange={handlelanguageValue}
             placeholder="What language is the tip"
             className={`${InputStyling} ${"border-none"}`}
           >
@@ -52,8 +105,18 @@ const Form = () => {
           </select>
         </div>
       </div>
+      <button
+        onClick={handleFormData}
+        className="w-full h-8 rounded-lg text-white text-sm bg-black"
+      >
+        Proceed
+      </button>
     </section>
   );
+};
+
+Form.propTypes = {
+  handlePassData: PropTypes.func.isRequired,
 };
 
 export default Form;
