@@ -26,12 +26,14 @@ const Label = (props) => {
         setLanguageNumber(3);
       } else if (language === "C++") {
         setLanguageNumber(4);
-      } else {
+      } else if (language === "Go") {
         setLanguageNumber(5);
+      } else {
+        return;
       }
     };
     handleFilterClasses();
-  }, [language]);
+  }, [language, props.language]);
 
   useEffect(() => {
     setLanguage(props.language);

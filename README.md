@@ -6,7 +6,7 @@
 - Add tips
 - Search for tips & Filter based on programming language
 - User selects from the following languages: Python, JavaScript, Java, C++, Ruby, Go
-- Random colors on the labels
+- Custom colors for each language
 - The footer must contain - built by Accama 🤭
 
 ## Tech Stack

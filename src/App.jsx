@@ -85,7 +85,7 @@ function App() {
       }
     };
     handleFilterForm();
-  }, [Data, formData]);
+  }, [formData]);
 
   return (
     <main className="w-screen h-screen bg-mainBG flex items-center justify-center">
@@ -110,12 +110,12 @@ function App() {
               className="w-full tex-xs font-sgRegular relative p-2 sm:p-2.5 bg-filterBg rounded-lg"
             >
               <option value="python">Filter language</option>
-              <option value="python">python</option>
-              <option value="javascript">javascript</option>
-              <option value="java">java</option>
-              <option value="c">c</option>
-              <option value="ruby">ruby</option>
-              <option value="go">go</option>
+              <option value="python">Python</option>
+              <option value="javascript">Javascript</option>
+              <option value="java">Java</option>
+              <option value="c">C++</option>
+              <option value="ruby">Ruby</option>
+              <option value="go">Go</option>
             </select>
           </div>
         </div>
