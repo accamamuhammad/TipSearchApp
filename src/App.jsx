@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -10,11 +10,12 @@ function App() {
   const [toggleAddTask, setToggleAddTask] = useState(false);
   const [toggleDescription, setToggleDescription] = useState(false);
   const [currentDescription, setCurrentDescription] = useState([]);
-  const [formData, setFormData] = useState({});
-
-  console.log(formData);
-
-  const Data = [
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    language: "",
+  });
+  const [Data, setData] = useState([
     {
       title: "Optimize Loops with List Comprehensions",
       description:
@@ -51,7 +52,7 @@ function App() {
         "Go's built-in support for concurrency through Goroutines and Channels makes it easy to write programs that can perform multiple tasks simultaneously. Goroutines are lightweight threads that allow you to run functions concurrently, while Channels facilitate communication and synchronization between Goroutines. Mastering these concepts enables you to build highly efficient and scalable applications that can handle concurrent workloads gracefully.",
       language: "Go",
     },
-  ];
+  ]);
 
   const handleAddTip = () => {
     setToggleAddTask(!toggleAddTask);
@@ -70,9 +71,25 @@ function App() {
     setToggleDescription(true);
   };
 
+  useEffect(() => {
+    const handleFilterForm = () => {
+      if (
+        (formData.title === "") |
+        (formData.description === "") |
+        (formData.language === "")
+      ) {
+        return;
+      } else {
+        setToggleAddTask(false);
+        setData([...Data, formData]);
+      }
+    };
+    handleFilterForm();
+  }, [Data, formData]);
+
   return (
     <main className="w-screen h-screen bg-mainBG flex items-center justify-center">
-      <div className="w-screen md:w-[700px] h-[500px] gap-1 mx-5 md:mx-0 flex-col rounded-2xl bg-white flex items-start justify-start">
+      <div className="w-screen md:w-[650px] h-[480px] pb-5 gap-1 mx-5 md:mx-0 flex-col rounded-2xl bg-white flex items-start justify-start">
         <div className="w-full px-3 sm:px-5 flex gap-3 flex-col">
           <div className="w-full pt-5 pb-2 flex flex-row items-center justify-between">
             <h1 className="font-sgBold text-xl sm:text-2xl">Tech Tips</h1>
@@ -80,7 +97,11 @@ function App() {
               onClick={handleAddTip}
               className="w-6 h-6 rounded-full bg-black cursor-pointer flex items-center justify-center"
             >
-              <FontAwesomeIcon icon={faPlus} size="sm" className="text-white" />
+              <FontAwesomeIcon
+                icon={faPlus}
+                size="sm"
+                className="text-white "
+              />
             </div>
           </div>
           <div className="pr-2 mb-2 bg-filterBg rounded-lg">
@@ -99,7 +120,7 @@ function App() {
           </div>
         </div>
         <div className="w-full h-[0.2px] bg-formStroke" />
-        <ul className="w-full">
+        <ul className="w-full overflow-y-auto">
           {Data.map((item, index) => (
             <li
               key={index}
@@ -131,7 +152,7 @@ function App() {
         >
           <p
             onClick={handleToggleDescription}
-            className={`${`bg-${currentDescription[2]}`} ${"cursor-pointer px-2 py-0 pb-1 rounded-lg text-2xl"}`}
+            className={`${`bg-${currentDescription[2]}`} ${"overflow-x-auto cursor-pointer px-2 py-0 pb-1 rounded-lg text-2xl"}`}
           >
             x
           </p>
