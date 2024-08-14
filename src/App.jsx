@@ -68,6 +68,11 @@ function App() {
       setCurrentFormData([...Data, formDataUser]);
       setData([...Data, formDataUser]);
       setToggleAddTask(false);
+      setFormDataUser({
+        title: "",
+        description: "",
+        language: "",
+      });
     } else {
       return;
     }
