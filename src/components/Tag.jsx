@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-const Label = (props) => {
+const Tag = (props) => {
   const [language, setLanguage] = useState(props.language);
   const [languageNumber, setLanguageNumber] = useState(0);
 
@@ -48,8 +48,8 @@ const Label = (props) => {
   );
 };
 
-Label.propTypes = {
+Tag.propTypes = {
   language: PropTypes.string.isRequired,
 };
 
-export default Label;
+export default Tag;

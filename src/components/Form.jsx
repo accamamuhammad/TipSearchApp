@@ -58,9 +58,7 @@ const Form = (props) => {
         </p>
       </div>
       <div className="w-full flex gap-1 flex-col items-start">
-        <label htmlFor="title" className="text-black font-sgMedium">
-          Title
-        </label>
+        <p className="text-black font-sgMedium">Title</p>
         <input
           type="text"
           name="title"
@@ -71,9 +69,7 @@ const Form = (props) => {
         />
       </div>
       <div className="w-full flex gap-1 flex-col items-start">
-        <label htmlFor="description" className="text-black font-sgMedium">
-          Description
-        </label>
+        <p className="text-black font-sgMedium">Description</p>
         <textarea
           type="text"
           name="description"
@@ -84,9 +80,7 @@ const Form = (props) => {
         />
       </div>
       <div className="w-full flex gap-1 flex-col items-start">
-        <label htmlFor="language" className="text-black font-sgMedium">
-          Choose a language
-        </label>
+        <p className="text-black font-sgMedium"> Choose a language</p>
         <div className="w-full border pr-2 rounded-lg">
           <select
             name="language"

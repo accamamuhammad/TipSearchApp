@@ -4,7 +4,7 @@ import Form from "./components/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import Label from "./components/label";
+import Tag from "./components/Tag";
 
 function App() {
   const [toggleAddTask, setToggleAddTask] = useState(false);
@@ -172,7 +172,7 @@ function App() {
               <p className="w-[190px] sm:w-[360px] font-sgRegular text-[0.65rem] sm:text-xs">
                 {item.title}
               </p>
-              <Label language={item.language} />
+              <Tag language={item.language} />
               <div
                 onClick={() => openDescription(item)}
                 className="w-5 h-5 flex items-center justify-center"
