@@ -1,7 +1,7 @@
 ![favicon](https://github.com/user-attachments/assets/14697df9-a69d-4f6b-8390-30220bfca678)
-# Levi Okoye - Weekly Challenge
+# Tip Search App - BY Accama
 
-## Tip Search App - BY Accama
+### Levi Okoye - Weekly Challenge
 
 ## Features
 
