@@ -8,7 +8,6 @@ import Label from "./components/label";
 
 function App() {
   const [toggleAddTask, setToggleAddTask] = useState(false);
-  const [filterYesOrNo, setFilterYesOrNo] = useState(false);
   const [toggleDescription, setToggleDescription] = useState(false);
   const [currentDescription, setCurrentDescription] = useState([]);
   const [currentChoosenLanguage, setCurrentChoosenLanguage] = useState("");
@@ -76,7 +75,7 @@ function App() {
   */
 
   /** Add new data */
-  const addNewData = () => {
+  useEffect(() => {
     if (
       (formDataUser.title !== "") |
         (formDataUser.description !== "") |
@@ -89,10 +88,7 @@ function App() {
     } else {
       return;
     }
-  };
-  useEffect(() => {
-    addNewData();
-  }, [formDataUser]);
+  }, [Data, formDataUser, toggleAddTask]);
 
   /** Filter Data */
   useEffect(() => {
