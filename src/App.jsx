@@ -57,23 +57,6 @@ function App() {
   ]);
   const [currentFormData, setCurrentFormData] = useState(Data);
 
-  /** 
-  useEffect(() => {
-    const handleFilterDataBasedOnLanguage = () => {
-      if (currentChoosenLanguage === "All") {
-        setCurrentFormData(Data);
-      } else {
-        for (let i = 0; i < Data.length; i++) {
-          if (Data[i].language === currentChoosenLanguage) {
-            setCurrentFormData([Data[i]]);
-          }
-        }
-      }
-    };
-    handleFilterDataBasedOnLanguage();
-  }, [currentChoosenLanguage, Data]);
-  */
-
   /** Add new data */
   useEffect(() => {
     if (
@@ -214,6 +197,9 @@ function App() {
       >
         <Form handlePassData={(data) => setFormDataUser(data)} />
       </div>
+      <p className="absolute font-sgBold text-[0.9rem] text-slate-800 bottom-6">
+        Built By Accama
+      </p>
     </main>
   );
 }
