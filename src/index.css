@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+main {
+  height: 100vh;
+  height: 100dvh;
+}
+
 @font-face {
   font-family: "SP-light";
   src: url(/public/Space_Grotesk/static/SpaceGrotesk-Light.ttf);

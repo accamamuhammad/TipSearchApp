@@ -114,7 +114,7 @@ function App() {
   };
 
   return (
-    <main className="w-screen h-screen bg-mainBG overflow-y-hidden flex items-center justify-center">
+    <main className="w-screen bg-mainBG overflow-y-hidden flex items-center justify-center">
       <div className="w-screen md:w-[650px] h-[480px] pb-5 gap-1 mx-5 md:mx-0 flex-col rounded-2xl bg-white flex items-start justify-start">
         <div className="w-full px-3 sm:px-5 flex gap-3 flex-col">
           <div className="w-full pt-5 pb-2 flex flex-row items-center justify-between">
@@ -197,7 +197,7 @@ function App() {
       >
         <Form handlePassData={(data) => setFormDataUser(data)} />
       </div>
-      <p className="absolute font-sgBold text-[0.9rem] text-slate-800 bottom-6">
+      <p className="absolute font-sgBold text-[0.9rem] text-slate-800 bottom-[12dvh]">
         Built By Accama
       </p>
     </main>
