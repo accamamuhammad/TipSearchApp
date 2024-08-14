@@ -1,4 +1,6 @@
-# Levi Okoye - Weekly Challenge - Tip Search App
+# Levi Okoye - Weekly Challenge
+
+## Tip Search App - BY Accama
 
 ## Features
 
@@ -26,8 +28,13 @@ Tips is added by presenting the user with a form and the data from that form is 
 
 ### How I Search for Tips and Filter Them
 
-- The input prompts the user to add the title, description, and the programming language it relates to.
+- The input prompts the user to add the title, description, and the programming language it relates to, it then sends the data to the main page to be stored, it is then displayed using the map arry function or filtered using the filter array funtion
 
 ## How i am getting my data
 
-- I am getting my data from a a data.js file that i manually input data into
+- I am storing my data in the main file manually because i hav not linked it to a data base yet.
+
+## Challenges i faced
+
+- i had trouble getting the timer right with getting the data from the user for adding new task adding it and rendering it at the right time
+- i also had problems filtering the languages, but i used a diffrent array to store different filter for the langauges Data for all tip and a sorting function creates a specific array based on the filter option selected which is then set as the current Data
