@@ -95,13 +95,13 @@ const Form = (props) => {
             placeholder="What language is the tip"
             className={`${InputStyling} ${"border-none"}`}
           >
-            <option value="python">language</option>
-            <option value="python">python</option>
-            <option value="javascript">javascript</option>
-            <option value="java">java</option>
-            <option value="c">c</option>
-            <option value="ruby">ruby</option>
-            <option value="go">go</option>
+            <option value="">language</option>
+            <option value="Python">python</option>
+            <option value="JavaScript">javascript</option>
+            <option value="Java">java</option>
+            <option value="C++">c</option>
+            <option value="Ruby">ruby</option>
+            <option value="Go">go</option>
           </select>
         </div>
       </div>

@@ -8,14 +8,16 @@ import Label from "./components/label";
 
 function App() {
   const [toggleAddTask, setToggleAddTask] = useState(false);
+  const [filterYesOrNo, setFilterYesOrNo] = useState(false);
   const [toggleDescription, setToggleDescription] = useState(false);
   const [currentDescription, setCurrentDescription] = useState([]);
   const [currentChoosenLanguage, setCurrentChoosenLanguage] = useState("");
-  const [formData, setFormData] = useState({
+  const [formDataUser, setFormDataUser] = useState({
     title: "",
     description: "",
     language: "",
   });
+
   const [Data, setData] = useState([
     {
       title: "Optimize Loops with List Comprehensions",
@@ -56,55 +58,73 @@ function App() {
   ]);
   const [currentFormData, setCurrentFormData] = useState(Data);
 
+  /** 
   useEffect(() => {
     const handleFilterDataBasedOnLanguage = () => {
       if (currentChoosenLanguage === "All") {
-        console.log(currentChoosenLanguage);
-      } else if (currentChoosenLanguage === "python") {
-        console.log(currentChoosenLanguage);
-      } else if (currentChoosenLanguage === "javascript") {
-        console.log(currentChoosenLanguage);
-      } else if (currentChoosenLanguage === "java") {
-        console.log(currentChoosenLanguage);
-      } else if (currentChoosenLanguage === "c++") {
-        console.log(currentChoosenLanguage);
-      } else if (currentChoosenLanguage === "ruby") {
-        console.log(currentChoosenLanguage);
-      } else if (currentChoosenLanguage === "go") {
-        console.log(currentChoosenLanguage);
+        setCurrentFormData(Data);
+      } else {
+        for (let i = 0; i < Data.length; i++) {
+          if (Data[i].language === currentChoosenLanguage) {
+            setCurrentFormData([Data[i]]);
+          }
+        }
       }
     };
     handleFilterDataBasedOnLanguage();
-  }, [currentChoosenLanguage]);
+  }, [currentChoosenLanguage, Data]);
+  */
 
+  /** Add new data */
+  const addNewData = () => {
+    if (
+      (formDataUser.title !== "") |
+        (formDataUser.description !== "") |
+        (formDataUser.language !== "") &&
+      toggleAddTask
+    ) {
+      setCurrentFormData([...Data, formDataUser]);
+      setData([...Data, formDataUser]);
+      setToggleAddTask(false);
+    } else {
+      return;
+    }
+  };
   useEffect(() => {
-    const handleFilterForm = () => {
-      if (
-        (formData.title === "") |
-        (formData.description === "") |
-        (formData.language === "")
-      ) {
-        return;
-      } else {
-        setToggleAddTask(false);
-        setData([...Data, formData]);
-      }
-    };
-    handleFilterForm();
-  }, [formData]);
+    addNewData();
+  }, [formDataUser]);
 
+  /** Filter Data */
+  useEffect(() => {
+    if (currentChoosenLanguage === "All") {
+      setCurrentFormData(Data);
+    } else {
+      let temporaryFilter = [];
+      for (let i = 0; i < Data.length; i++) {
+        if (Data[i].language === currentChoosenLanguage) {
+          temporaryFilter.push(Data[i]);
+          setCurrentFormData(temporaryFilter);
+        }
+      }
+    }
+  }, [Data, currentChoosenLanguage, formDataUser, toggleAddTask]);
+
+  /** Filter Tip */
   const handleAddTip = () => {
     setToggleAddTask(!toggleAddTask);
   };
 
-  const handleToggleDescription = () => {
-    setToggleDescription(false);
-  };
-
+  /** Get value of current filter */
   const handleCurrentFilter = (e) => {
     setCurrentChoosenLanguage(e.target.value);
   };
 
+  /** For toggle Description of tip */
+  const handleToggleDescription = () => {
+    setToggleDescription(false);
+  };
+
+  /** Add Data needed for description */
   const openDescription = (description) => {
     setCurrentDescription([
       description.title,
@@ -115,16 +135,14 @@ function App() {
   };
 
   return (
-    <main className="w-screen h-screen bg-mainBG flex items-center justify-center">
+    <main className="w-screen h-screen bg-mainBG overflow-y-hidden flex items-center justify-center">
       <div className="w-screen md:w-[650px] h-[480px] pb-5 gap-1 mx-5 md:mx-0 flex-col rounded-2xl bg-white flex items-start justify-start">
         <div className="w-full px-3 sm:px-5 flex gap-3 flex-col">
           <div className="w-full pt-5 pb-2 flex flex-row items-center justify-between">
             <h1 className="font-sgBold text-xl sm:text-2xl">Tech Tips</h1>
-            <div
-              onClick={handleAddTip}
-              className="w-6 h-6 rounded-full bg-black cursor-pointer flex items-center justify-center"
-            >
+            <div className="w-6 h-6 rounded-full bg-black cursor-pointer flex items-center justify-center">
               <FontAwesomeIcon
+                onClick={handleAddTip}
                 icon={faPlus}
                 size="sm"
                 className="text-white "
@@ -138,14 +156,13 @@ function App() {
               name="filter-language"
               className="w-full tex-xs font-sgRegular relative p-2 sm:p-2.5 bg-filterBg rounded-lg"
             >
-              <option value="python">Filter language</option>
-              <option value="All">All</option>
-              <option value="python">Python</option>
-              <option value="javascript">Javascript</option>
-              <option value="java">Java</option>
-              <option value="c++">C++</option>
-              <option value="ruby">Ruby</option>
-              <option value="go">Go</option>
+              <option value="All">Filter language</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Python">Python</option>
+              <option value="Java">Java</option>
+              <option value="C++">C++</option>
+              <option value="Ruby">Ruby</option>
+              <option value="Go">Go</option>
             </select>
           </div>
         </div>
@@ -195,11 +212,11 @@ function App() {
       <div
         className={
           toggleAddTask
-            ? "w-full px-10 absolute top-[60%] left-1/2 sm:left-[70%] right-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            ? "w-full px-10 absolute top-1/2 left-1/2 sm:left-[70%] right-1/2 transform -translate-x-1/2 -translate-y-1/2"
             : "hidden"
         }
       >
-        <Form handlePassData={(data) => setFormData(data)} />
+        <Form handlePassData={(data) => setFormDataUser(data)} />
       </div>
     </main>
   );
